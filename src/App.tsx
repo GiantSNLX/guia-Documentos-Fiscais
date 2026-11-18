@@ -7,6 +7,7 @@ import { OperationalBriefing } from './components/OperationalBriefing';
 import { DocumentCanvas } from './components/DocumentCanvas';
 import { FieldInspector } from './components/FieldInspector';
 import { FieldSummary } from './components/FieldSummary';
+import { MobileFieldBar } from './components/MobileFieldBar';
 import { FloatingFieldBalloon, type AnchorBox } from './components/FloatingFieldBalloon';
 import { anonymizeDocData, parseFiscalXml } from './utils/xmlParser';
 
@@ -115,6 +116,8 @@ export function App() {
     clearHideTimer();
     if (!isDrawerOpen) {
       setHoveredFieldId(fieldId);
+      // No celular (< 768px) o toque abre o Drawer direto; evita piscar o balão de hover
+      if (window.innerWidth < 768) return;
       const el = anchorEl ?? findFieldAnchorEl(fieldId);
       if (el) {
         syncAnchorFromEl(el);
@@ -336,8 +339,8 @@ export function App() {
           </div>
         )}
 
-        {/* Barra de controle do Sumário */}
-        <div className="flex items-center justify-between">
+        {/* Barra de controle do Sumário (apenas PC lg+) */}
+        <div className="hidden items-center justify-between lg:flex">
           <button
             type="button"
             onClick={() => setShowSummary((v) => !v)}
@@ -356,7 +359,7 @@ export function App() {
             )}
           </button>
 
-          <span className="hidden text-xs text-zinc-500 sm:inline dark:text-zinc-400">
+          <span className="text-xs text-zinc-500 dark:text-zinc-400">
             Atalhos: teclas{' '}
             <kbd className="rounded border border-zinc-200 bg-white px-1 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200">
               1
@@ -369,11 +372,19 @@ export function App() {
           </span>
         </div>
 
-        {/* Layout principal: Sumário à esquerda + Folha A4 ampla à direita */}
+        {/* Navegação rápida horizontal exclusiva para celular/tablet (< lg) */}
+        <MobileFieldBar
+          model={activeModel}
+          activeFieldId={inspectedField?.id ?? null}
+          highlightCriticalOnly={highlightCriticalOnly}
+          onSelectField={handleSelectFromSummary}
+        />
+
+        {/* Layout principal: Sumário à esquerda (PC) + Folha A4 ampla */}
         <div className="flex flex-col items-start gap-4 lg:flex-row">
           {showSummary && (
             <div
-              className="w-full shrink-0 lg:sticky lg:top-[116px] lg:w-52"
+              className="hidden w-52 shrink-0 lg:sticky lg:top-[116px] lg:block"
               onMouseLeave={scheduleHideBalloon}
             >
               <FieldSummary

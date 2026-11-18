@@ -215,18 +215,18 @@ export function FieldInspector({
           <button
             type="button"
             onClick={() => onStepField('prev')}
-            className="inline-flex cursor-pointer items-center gap-1 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 transition hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
+            className="inline-flex cursor-pointer items-center gap-1 rounded-lg border border-zinc-200 bg-white px-3.5 py-2.5 text-xs font-medium text-zinc-700 transition hover:bg-zinc-50 sm:px-3 sm:py-1.5 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
           >
             <ChevronLeft className="h-3.5 w-3.5" />
             Anterior
           </button>
-          <span className="text-[11px] text-zinc-400 dark:text-zinc-500">
+          <span className="hidden text-[11px] text-zinc-400 sm:inline dark:text-zinc-500">
             Esc para fechar
           </span>
           <button
             type="button"
             onClick={() => onStepField('next')}
-            className="inline-flex cursor-pointer items-center gap-1 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 transition hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
+            className="inline-flex cursor-pointer items-center gap-1 rounded-lg border border-zinc-200 bg-white px-3.5 py-2.5 text-xs font-medium text-zinc-700 transition hover:bg-zinc-50 sm:px-3 sm:py-1.5 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
           >
             Próximo
             <ChevronRight className="h-3.5 w-3.5" />

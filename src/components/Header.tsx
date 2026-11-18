@@ -236,7 +236,7 @@ export function Header({
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => onSelectModel(model.id)}
-                  className={`group flex shrink-0 cursor-pointer items-center gap-2 rounded-lg px-3.5 py-1.5 text-[13px] font-semibold transition-all duration-300 ease-out ${
+                  className={`group flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold transition-all duration-300 ease-out sm:gap-2 sm:px-3.5 sm:text-[13px] ${
                     isActive
                       ? accent.pillActive
                       : 'text-zinc-600 hover:bg-white hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
@@ -253,7 +253,7 @@ export function Header({
                   </span>
                   <span>{model.shortName}</span>
                   <span
-                    className={`rounded px-1.5 py-0.5 text-[10.5px] font-medium transition-colors duration-300 ${
+                    className={`hidden rounded px-1.5 py-0.5 text-[10.5px] font-medium transition-colors duration-300 sm:inline ${
                       isActive
                         ? 'bg-white/15 text-zinc-100 dark:bg-zinc-950/10 dark:text-zinc-800'
                         : 'bg-white/90 text-zinc-500 dark:bg-zinc-950/70 dark:text-zinc-500'

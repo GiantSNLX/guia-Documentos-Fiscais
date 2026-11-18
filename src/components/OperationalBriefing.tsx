@@ -38,7 +38,9 @@ export function OperationalBriefing({ model }: OperationalBriefingProps) {
 
       if (now < cooldownUntilRef.current) return;
 
-      if (goingDown && y > 130 && expanded) {
+      const threshold = window.innerWidth < 768 ? 85 : 130;
+
+      if (goingDown && y > threshold && expanded) {
         setExpanded(false);
         autoCollapsedRef.current = true;
         cooldownUntilRef.current = now + 450;
