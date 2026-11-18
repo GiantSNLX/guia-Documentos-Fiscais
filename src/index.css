@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+.doc-paper {
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 14px 36px -8px rgba(15, 23, 42, 0.14);
+}
+
+.dark .doc-paper {
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 20px 44px -10px rgba(0, 0, 0, 0.55);
+}
+
+.receipt-edge {
+  background-image: radial-gradient(circle at 8px 0, transparent 5px, #fffdf5 5.5px);
+  background-size: 16px 10px;
+  background-repeat: repeat-x;
+}
+
+@keyframes balloonIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes drawerSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sheetFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-balloon-in {
+  animation: balloonIn 260ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-drawer-in {
+  animation: drawerSlideIn 340ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-backdrop-in {
+  animation: backdropFadeIn 280ms ease-out forwards;
+}
+
+.animate-sheet-in {
+  animation: sheetFadeIn 360ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-balloon-in,
+  .animate-drawer-in,
+  .animate-backdrop-in,
+  .animate-sheet-in {
+    animation: none;
+  }
+}
